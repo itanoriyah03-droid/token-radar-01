@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Token Radar: pre-token protocols ranked by fitted implied value</title>
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+<a class="skip" href="#board">Skip to the board</a>
+<header class="head">
+  <div>
+    <h1>Token Radar</h1>
+    <p class="sub">Pre-token protocols, ranked by implied value — fitted from the protocols whose token already trades. Snapshot <span id="asof"></span> · floor <span id="floor"></span> · model <span id="mver"></span></p>
+  </div>
+  <div class="head-note">Implied value = TVL × fitted multiple × token odds. No protocol name is special-cased; every figure below derives from the snapshot.</div>
+</header>
+<section class="kpis" id="kpis" aria-label="Headline figures"></section>
+<section class="recon" id="recon" aria-label="Reconciliation"></section>
+<section class="modelbox" id="modelbox" aria-label="Model and validation"></section>
+<nav class="tabs" aria-label="Views">
+  <button type="button" data-tab="board" class="tab on" id="tab-board">Board</button>
+  <button type="button" data-tab="live" class="tab" id="tab-live">Live tokens</button>
+</nav>
+<section class="controls" id="controls">
+  <label>Search <input id="q" type="search" placeholder="name or slug" autocomplete="off"></label>
+  <label>Category <select id="cat"><option value="all">All categories</option></select></label>
+  <label>Verdict <select id="verdict"><option value="all">All verdicts</option><option>FARM</option><option>MARGINAL</option><option>THIN</option><option>SKIP</option></select></label>
+  <label>List <select id="list"><option value="all">Watchlist + early</option><option value="watchlist">Watchlist only</option><option value="early">Early only</option></select></label>
+  <label>Sort <select id="sort"><option value="implied">Implied value</option><option value="tvl">TVL</option><option value="odds">Token odds</option><option value="multiple">Fitted multiple</option><option value="perhour">$/hour</option><option value="growth">7d growth</option></select></label>
+  <button type="button" id="csv">Export CSV</button>
+  <button type="button" id="json">Export JSON</button>
+  <span class="count" id="count"></span>
+</section>
+<main id="board" tabindex="-1" aria-busy="true"></main>
+<section class="detail" id="detail" hidden></section>
+<section class="live" id="live" hidden></section>
+<footer class="foot">Source: DefiLlama protocols snapshot, sealed at the competition's input. A protocol "records no token" when its record carries no market cap, CoinGecko id or symbol — never a claim it has none. Farm economics assume the airdrop pool is 5% of implied value, one farmer captures 0.01% of that pool, and capital earns 4.5% a year while held.</footer>
+<script src="../data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
